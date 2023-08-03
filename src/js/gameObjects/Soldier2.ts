@@ -5,7 +5,10 @@ export default class Soldier2 extends Soldier {
   public scene: ShooterScene;
 
   constructor(scene: ShooterScene, x: number, y: number) {
-    super(scene, x, y, "soldier1");
+    super(scene, x, y, "soldier2");
+
+    // поворачиваю спрайты в горизонтальной плоскости
+    this.flipX = !this.flipX;
   }
 
   public createAnimations(): void {
@@ -23,18 +26,18 @@ export default class Soldier2 extends Soldier {
         { 
           key: `${this.texture.key}-idle`,
           frameRate: 12,
-          frames: this.scene.anims.generateFrameNumbers(this.texture.key, { frames: [7, 8, 9, 10, 11, 12, 13] }),
+          frames: this.scene.anims.generateFrameNumbers(this.texture.key, { frames: [7, 8, 9, 10, 11, 12, 13, 14, 15] }),
           repeat: -1, 
         },
         { 
           key: `${this.texture.key}-shot1`,
           frameRate: 12,
-          frames: this.scene.anims.generateFrameNumbers(this.texture.key, { frames: [14, 15, 16, 17] }),
+          frames: this.scene.anims.generateFrameNumbers(this.texture.key, { frames: [16, 17, 18, 19] }),
         },
         { 
           key: `${this.texture.key}-shot2`,
           frameRate: 12, 
-          frames: this.scene.anims.generateFrameNumbers(this.texture.key, { frames: [18, 19, 20, 21] }),
+          frames: this.scene.anims.generateFrameNumbers(this.texture.key, { frames: [20, 21, 22, 23] }),
         },
       ];
   
