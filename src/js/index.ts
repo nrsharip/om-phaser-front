@@ -6,7 +6,7 @@ import ShooterScene from "./scenes/ShooterScene";
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   width: 512,
-  height: 128,
+  height: 192,
   zoom: 2,
   backgroundColor: '#fdfdfd',
   input: {
