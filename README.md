@@ -4,7 +4,10 @@
 - [FREE RAIDER SPRITE SHEETS PIXEL ART](https://craftpix.net/freebies/free-raider-sprite-sheets-pixel-art/)
 - [FREE GUNS PACK 2 FOR MAIN CHARACTERS PIXEL ART](https://craftpix.net/freebies/free-guns-pack-2-for-main-characters-pixel-art/)
 - [FREE GUNS FOR CYBERPUNK CHARACTERS PIXEL ART](https://craftpix.net/freebies/free-guns-for-cyberpunk-characters-pixel-art/)
-
+- [Male Death #2](https://freesound.org/people/AUDACITIER/sounds/632243/)
+- [Male Death Sound](https://freesound.org/people/HighPixel/sounds/554443/)
+- [357 Magnum Revolver Gunshot](https://freesound.org/people/Shark_Anthony/sounds/683186/)
+- [pistol2.mp3](https://freesound.org/people/senitiel/sounds/220612/)
 
 ## Installation
 

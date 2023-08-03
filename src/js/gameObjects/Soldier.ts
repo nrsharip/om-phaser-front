@@ -42,7 +42,7 @@ export default abstract class Soldier extends Phaser.Physics.Arcade.Sprite {
   public setState(value: PlayerStates) {
     switch (value) {
         case PlayerStates.DEAD:
-          this.play(`${this.texture.key}-dead`);
+          this.play(`${this.texture.key}-dead`).playAudio(Math.random() < 0.5 ? "death1" : "death2");
           break;
   
         case PlayerStates.HURT:
@@ -54,11 +54,11 @@ export default abstract class Soldier extends Phaser.Physics.Arcade.Sprite {
           break;
   
         case PlayerStates.SHOT1:
-          this.play(`${this.texture.key}-shot1`);
+          this.play(`${this.texture.key}-shot1`).playAudio(Math.random() < 0.5 ? "shot1" : "shot2");
           break;
   
         case PlayerStates.SHOT2:
-          this.play(`${this.texture.key}-shot2`); // .playAudio("jump")
+          this.play(`${this.texture.key}-shot2`).playAudio(Math.random() < 0.5 ? "shot1" : "shot2")
           break;
     }
 
