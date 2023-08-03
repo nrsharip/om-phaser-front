@@ -1,6 +1,7 @@
 import Soldier from "../gameObjects/Soldier";
 import Soldier1 from "../gameObjects/Soldier1";
 import Soldier2 from "../gameObjects/Soldier2";
+import Soldier3 from "../gameObjects/Soldier3";
 
 export default class ShooterScene extends Phaser.Scene {
   private _npc1: Soldier;
