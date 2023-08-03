@@ -1,18 +1,10 @@
-# Phaser 3 Webpack 5 Boilerplate
+# Игровые ресурсы
 
-Get up and running with Phaser 3 using TypeScript or JavaScript ES6.
+- [FREE SOLDIER SPRITE SHEETS PIXEL ART](https://craftpix.net/freebies/free-soldier-sprite-sheets-pixel-art/)
+- [FREE RAIDER SPRITE SHEETS PIXEL ART](https://craftpix.net/freebies/free-raider-sprite-sheets-pixel-art/)
+- [FREE GUNS PACK 2 FOR MAIN CHARACTERS PIXEL ART](https://craftpix.net/freebies/free-guns-pack-2-for-main-characters-pixel-art/)
+- [FREE GUNS FOR CYBERPUNK CHARACTERS PIXEL ART](https://craftpix.net/freebies/free-guns-for-cyberpunk-characters-pixel-art/)
 
-This Webpack setup takes care of your code bundling and local development server.
-
-Included are some handy demonstration files:
-
-- `Inputs` class for handling gamepad and keyboard inputs
-- `Player` class demonstrating character movement and state management
-- A basic tilemap created using [Tiled](https://www.mapeditor.org/)
-
-[View the demo](https://sebsowter.github.io/phaser-webpack/)
-
-![Mario](https://user-images.githubusercontent.com/7384630/55728490-1205fb00-5a0c-11e9-9fca-67641df3549b.jpg)
 
 ## Installation
 

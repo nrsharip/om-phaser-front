@@ -1,12 +1,14 @@
 import "phaser";
 import LoaderScene from "./scenes/LoaderScene";
 import GameScene from "./scenes/GameScene";
+import ShooterScene from "./scenes/ShooterScene";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
-  width: 256,
-  height: 224,
+  width: 512,
+  height: 128,
   zoom: 2,
+  backgroundColor: '#fdfdfd',
   input: {
     keyboard: true,
     gamepad: true,
@@ -16,16 +18,16 @@ const config: Phaser.Types.Core.GameConfig = {
     antialias: false,
     antialiasGL: false,
   },
-  physics: {
-    default: "arcade",
-    arcade: {
-      debug: false,
-      gravity: {
-        y: 500,
-      },
-    },
-  },
-  scene: [LoaderScene, GameScene],
+//   physics: {
+//     default: "arcade",
+//     arcade: {
+//       debug: false,
+//       gravity: {
+//         y: 100,
+//       },
+//     },
+//   },
+  scene: [LoaderScene, GameScene, ShooterScene],
 };
 
 window.addEventListener("load", () => new Phaser.Game(config));
