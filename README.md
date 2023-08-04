@@ -8,6 +8,7 @@
 - [Male Death Sound](https://freesound.org/people/HighPixel/sounds/554443/)
 - [357 Magnum Revolver Gunshot](https://freesound.org/people/Shark_Anthony/sounds/683186/)
 - [pistol2.mp3](https://freesound.org/people/senitiel/sounds/220612/)
+- [UI Pack](https://kenney.nl/assets/ui-pack)
 
 ## Installation
 

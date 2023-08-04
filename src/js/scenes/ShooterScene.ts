@@ -7,6 +7,10 @@ export default class ShooterScene extends Phaser.Scene {
   private _npc1: Soldier;
   private _npc2: Soldier;
 
+  private textWinner: Phaser.GameObjects.Text | undefined;
+  private textButton: Phaser.GameObjects.Text | undefined;
+  private button: Phaser.GameObjects.NineSlice | undefined;
+
   constructor() {
     super({ key: "shooter", active: false, visible: false });
   }
@@ -37,7 +41,44 @@ export default class ShooterScene extends Phaser.Scene {
         if (win1 || win2) {
             this.time.clearPendingEvents();
             this.time.removeAllEvents();
+
+            this.showInfoAndMenu(win1 ? 1 : 2);
         }
+    });
+  }
+
+  public showInfoAndMenu(winner: number) {
+    this.textWinner?.destroy();
+    this.textWinner = this.add.text(134, 15, `Победил персонаж ${winner}`, { 
+        fontFamily: 'Arial', 
+        fontSize: 26, 
+        color: '#000000'
+    });
+
+    this.textButton?.destroy();
+    this.textButton = this.add.text(226, 72, `Новый бой`, { 
+        fontFamily: 'Arial', 
+        fontSize: 11, 
+        color: '#000000'
+    });
+    this.textButton.setDepth(1);
+
+    this.button?.destroy();
+    this.button = this.add.nineslice(256, 80, 'grey-button-03', 0, 120, 30, 2, 2, 2, 2);
+    this.button.setInteractive();
+
+    this.button.on('pointerdown', () => {
+        this.button?.destroy();
+        this.button = this.add.nineslice(256, 80, 'grey-button-04', 0, 120, 30, 2, 2, 2, 2);
+        this.button.setInteractive();
+
+        this.textButton.y += 1;
+
+        this.button.on('pointerup', () => {
+            this.textWinner?.destroy();
+            this.button?.destroy();
+            this.textButton?.destroy();
+        });
     });
   }
 }

@@ -62,7 +62,6 @@ export default class HealthBar {
             onUpdate: (tween) => {
                 
                 const v = tween.getValue();
-                console.log(v);
                 const c = 255 * v;
 
                 this.text.y -= v;
