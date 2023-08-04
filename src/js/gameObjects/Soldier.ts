@@ -10,6 +10,8 @@ export enum PlayerStates {
 }
 
 export default abstract class Soldier extends Phaser.Physics.Arcade.Sprite {
+  public static readonly MAX_HP = 1500;
+
   public scene: ShooterScene;
   public hp: HealthBar;
 
@@ -18,11 +20,11 @@ export default abstract class Soldier extends Phaser.Physics.Arcade.Sprite {
 
     this.createAnimations();
 
-    this.scene.add.existing(this).setState(PlayerStates.IDLE);
+    this.scene.add.existing(this);
 
-    this.hp = new HealthBar(scene, x, y - 32, 1500);
+    this.hp = new HealthBar(scene, x, y - 32, Soldier.MAX_HP);
 
-    this.rescheduleShot();
+    this.resetCharacter();
 
     // Добавляем обработчики завершения анимаций:
     // Выстрел 1
@@ -108,5 +110,13 @@ export default abstract class Soldier extends Phaser.Physics.Arcade.Sprite {
     this.scene.sound.play(key, { volume: 0.5 });
 
     return this;
+  }
+
+  public resetCharacter() {
+    this.setState(PlayerStates.IDLE);
+    this.hp.value = Soldier.MAX_HP;
+    this.hp.draw();
+
+    this.rescheduleShot();
   }
 }

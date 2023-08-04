@@ -78,6 +78,10 @@ export default class ShooterScene extends Phaser.Scene {
             this.textWinner?.destroy();
             this.button?.destroy();
             this.textButton?.destroy();
+
+            // this.scene.restart();
+            this._npc1.resetCharacter();
+            this._npc2.resetCharacter();
         });
     });
   }
