@@ -1,4 +1,4 @@
-import Soldier from "../gameObjects/Soldier";
+import Soldier, { PlayerStates } from "../gameObjects/Soldier";
 import Soldier1 from "../gameObjects/Soldier1";
 import Soldier2 from "../gameObjects/Soldier2";
 import Soldier3 from "../gameObjects/Soldier3";
@@ -22,5 +22,14 @@ export default class ShooterScene extends Phaser.Scene {
     const widthInPixels = 512, heightInPixels = 192;
 
     this.cameras.main.setBounds(0, 0, widthInPixels, heightInPixels);
+
+    // Обработка выстрела противника
+    this.events.on("enemy-shot", (key: string) => {
+        if (key === this._npc1.texture.key) {
+            this._npc2.setState(PlayerStates.HURT);
+        } else if (key === this._npc2.texture.key) {
+            this._npc1.setState(PlayerStates.HURT);
+        }
+    });
   }
 }

@@ -20,20 +20,22 @@ export default abstract class Soldier extends Phaser.Physics.Arcade.Sprite {
       .existing(this)
       .setState(PlayerStates.IDLE);
 
-    this.play("idle");
+    this.play(`${this.texture.key}-idle`);
 
     this.rescheduleShot();
 
-    // добавляем обработчик завершения анимации выстрелов
+    // Добавляем обработчики завершения анимаций:
     // Выстрел 1
     this.on(Phaser.Animations.Events.ANIMATION_COMPLETE_KEY + `${this.texture.key}-shot1`, () => {
         this.setState(PlayerStates.IDLE);
-        this.rescheduleShot();
     });
     // Выстрел 2
     this.on(Phaser.Animations.Events.ANIMATION_COMPLETE_KEY + `${this.texture.key}-shot2`, () => {
         this.setState(PlayerStates.IDLE);
-        this.rescheduleShot();
+    });
+    // Ранение
+    this.on(Phaser.Animations.Events.ANIMATION_COMPLETE_KEY + `${this.texture.key}-hurt`, () => {
+        this.setState(PlayerStates.IDLE);
     });
   }
 
@@ -54,11 +56,17 @@ export default abstract class Soldier extends Phaser.Physics.Arcade.Sprite {
           break;
   
         case PlayerStates.SHOT1:
+          this.rescheduleShot();
+          this.scene.events.emit("enemy-shot", this.texture.key);
+
           this.play(`${this.texture.key}-shot1`).playAudio(Math.random() < 0.5 ? "shot1" : "shot2");
           break;
   
         case PlayerStates.SHOT2:
-          this.play(`${this.texture.key}-shot2`).playAudio(Math.random() < 0.5 ? "shot1" : "shot2")
+          this.rescheduleShot();
+          this.scene.events.emit("enemy-shot", this.texture.key);
+  
+          this.play(`${this.texture.key}-shot2`).playAudio(Math.random() < 0.5 ? "shot1" : "shot2");
           break;
     }
 
