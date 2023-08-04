@@ -30,6 +30,14 @@ export default class ShooterScene extends Phaser.Scene {
         } else if (key === this._npc2.texture.key) {
             this._npc1.setState(PlayerStates.HURT);
         }
+
+        let win1 = !this._npc2.hp.value;
+        let win2 = !this._npc1.hp.value;
+
+        if (win1 || win2) {
+            this.time.clearPendingEvents();
+            this.time.removeAllEvents();
+        }
     });
   }
 }

@@ -1,4 +1,5 @@
 import ShooterScene from "../scenes/ShooterScene";
+import HealthBar from "../utils/HealthBar";
 
 export enum PlayerStates {
   DEAD,
@@ -10,17 +11,16 @@ export enum PlayerStates {
 
 export default abstract class Soldier extends Phaser.Physics.Arcade.Sprite {
   public scene: ShooterScene;
+  public hp: HealthBar;
 
   constructor(scene: ShooterScene, x: number, y: number, key: string) {
     super(scene, x, y, key);
 
     this.createAnimations();
 
-    this.scene.add
-      .existing(this)
-      .setState(PlayerStates.IDLE);
+    this.scene.add.existing(this).setState(PlayerStates.IDLE);
 
-    this.play(`${this.texture.key}-idle`);
+    this.hp = new HealthBar(scene, x, y - 32, 1500);
 
     this.rescheduleShot();
 
@@ -48,7 +48,12 @@ export default abstract class Soldier extends Phaser.Physics.Arcade.Sprite {
           break;
   
         case PlayerStates.HURT:
-          this.play(`${this.texture.key}-hurt`);
+          if (!this.hp.decrease(Math.random() < 0.5 ? 100 : 200)) {
+            this.play(`${this.texture.key}-hurt`);  
+          } else {
+            this.setState(PlayerStates.DEAD);
+          }
+          
           break;
   
         case PlayerStates.IDLE:
