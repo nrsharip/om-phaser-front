@@ -18,7 +18,7 @@ export default class HealthBar {
     private text?: Phaser.GameObjects.Text;
     private tween?: Phaser.Tweens.Tween;
 
-    constructor (scene: Phaser.Scene, x: number, y: number, max: number) {
+    constructor(scene: Phaser.Scene, x: number, y: number, max: number) {
         this.bar = new Phaser.GameObjects.Graphics(scene);
         this.scene = scene;
 
@@ -44,13 +44,13 @@ export default class HealthBar {
         this.text?.destroy();
         this.text = this.scene.add
             .text(
-                this.x + HealthBar.WIDTH / 2, 
-                this.y, 
-                `-${amount}`, { 
-                    fontFamily: 'Arial', 
-                    fontSize: HealthBar.TEXT_SIZE, color: 
-                    '#00FF00' 
-                })
+                this.x + HealthBar.WIDTH / 2,
+                this.y,
+                `-${amount}`, {
+                fontFamily: 'Arial',
+                fontSize: HealthBar.TEXT_SIZE, color:
+                    '#00FF00'
+            })
             .setOrigin(0.5, 0.5);
 
         this.tween?.destroy();
@@ -60,7 +60,7 @@ export default class HealthBar {
             duration: 1000,
             yoyo: false,
             onUpdate: (tween) => {
-                
+
                 const v = tween.getValue();
                 const c = 255 * v;
 
@@ -71,7 +71,7 @@ export default class HealthBar {
         });
     }
 
-    decrease (amount: number): boolean {
+    decrease(amount: number): boolean {
         this.damageText(amount);
 
         this.value -= amount;
@@ -85,7 +85,7 @@ export default class HealthBar {
         return (this.value === 0);
     }
 
-    draw (): void {
+    draw(): void {
         this.bar.clear();
 
         // BG
@@ -95,9 +95,9 @@ export default class HealthBar {
         // Health
         this.bar.fillStyle(0xffffff);
         this.bar.fillRect(
-            this.x + HealthBar.EDGE, 
-            this.y + HealthBar.EDGE, 
-            HealthBar.WIDTH - 2 * HealthBar.EDGE, 
+            this.x + HealthBar.EDGE,
+            this.y + HealthBar.EDGE,
+            HealthBar.WIDTH - 2 * HealthBar.EDGE,
             HealthBar.HEIGHT - 2 * HealthBar.EDGE
         );
 
@@ -110,9 +110,9 @@ export default class HealthBar {
         var d = Math.floor(this.p * this.value);
 
         this.bar.fillRect(
-            this.x + HealthBar.EDGE, 
-            this.y + HealthBar.EDGE, 
-            d, 
+            this.x + HealthBar.EDGE,
+            this.y + HealthBar.EDGE,
+            d,
             HealthBar.HEIGHT - 2 * HealthBar.EDGE
         );
     }

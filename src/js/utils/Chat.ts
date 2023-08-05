@@ -3,15 +3,15 @@ import { httpRequest, makeRequest } from "./AjaxHelper";
 let div: HTMLDivElement;
 
 function addLine(text: string): HTMLDivElement {
-    let line: HTMLDivElement = <HTMLDivElement> document.createElement("div");
+    let line: HTMLDivElement = <HTMLDivElement>document.createElement("div");
     line.textContent = text;
     div.appendChild(line);
-    
+
     return line;
 }
 
 export function createChatDomElements() {
-    div = <HTMLDivElement> document.createElement("div");
+    div = <HTMLDivElement>document.createElement("div");
 
     div.style.background = "#FAFAFA";
     div.style.width = "1024px";
@@ -24,7 +24,7 @@ export function createChatDomElements() {
 
     getMessages();
 
-    let input: HTMLInputElement = <HTMLInputElement> document.createElement("input");
+    let input: HTMLInputElement = <HTMLInputElement>document.createElement("input");
     input.style.width = "1024px";
     input.style.maxWidth = "1024px";
     input.style.padding = "0";
@@ -33,7 +33,7 @@ export function createChatDomElements() {
         if (event.key === 'Enter' && event.target instanceof HTMLInputElement) {
             postMessage(input.value);
             input.value = "";
-        }      
+        }
     });
 
     // каждые 5 секунд получаем новые сообщения
@@ -82,9 +82,9 @@ function postMessage(message: string) {
 function processHttpRequest() {
     try {
 
-        let json: { 
-            items: Array<{ 
-                millis: number, 
+        let json: {
+            items: Array<{
+                millis: number,
                 message: string
             }>
         } = JSON.parse(httpRequest.responseText);
@@ -98,7 +98,7 @@ function processHttpRequest() {
             addLine(`[${date.toLocaleString()}] ${message}`);
         }
 
-    } catch(e) {
+    } catch (e) {
         console.log("Ошибка при парсинге: ", e)
     }
 }
