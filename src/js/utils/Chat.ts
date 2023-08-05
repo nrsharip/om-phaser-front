@@ -2,7 +2,15 @@ import { httpRequest, makeRequest } from "./AjaxHelper";
 
 let div: HTMLDivElement;
 
-export function createDomElements() {
+function addLine(text: string): HTMLDivElement {
+    let line: HTMLDivElement = <HTMLDivElement> document.createElement("div");
+    line.textContent = text;
+    div.appendChild(line);
+    
+    return line;
+}
+
+export function createChatDomElements() {
     div = <HTMLDivElement> document.createElement("div");
 
     div.style.background = "#FAFAFA";
@@ -45,7 +53,8 @@ function getMessages() {
                 if (httpRequest.status === 200) {
                     processHttpRequest();
                 } else {
-                    console.log("Проблема с GET запросом");
+                    let line = addLine(`[${new Date().toLocaleString()}] Проблема с GET запросом к http://127.0.0.1:3000`);
+                    line.style.color = "#FF0000";
                 }
             }
         }
@@ -62,7 +71,8 @@ function postMessage(message: string) {
                 if (httpRequest.status === 200) {
                     getMessages();
                 } else {
-                    console.log("Проблема с POST запросом");
+                    let line = addLine(`[${new Date().toLocaleString()}] Проблема с POST запросом к http://127.0.0.1:3000`);
+                    line.style.color = "#FF0000";
                 }
             }
         }
@@ -70,8 +80,6 @@ function postMessage(message: string) {
 }
 
 function processHttpRequest() {
-    console.log(httpRequest.responseText);
-    
     try {
 
         let json: { 
@@ -84,16 +92,10 @@ function processHttpRequest() {
         div.replaceChildren();
 
         for (let { millis, message } of json.items) {
-
-            let line: HTMLDivElement = <HTMLDivElement> document.createElement("div");
-
             let date: Date = new Date(0);
             date.setUTCMilliseconds(millis);
 
-            line.textContent += `[${date.toLocaleString()}] ${message} \r\n`;
-
-            div.appendChild(line);
-
+            addLine(`[${date.toLocaleString()}] ${message}`);
         }
 
     } catch(e) {
