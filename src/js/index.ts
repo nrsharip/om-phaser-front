@@ -2,6 +2,7 @@ import "phaser";
 import LoaderScene from "./scenes/LoaderScene";
 import GameScene from "./scenes/GameScene";
 import ShooterScene from "./scenes/ShooterScene";
+import { createDomElements as createChatDomElements } from "./utils/Chat";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -30,4 +31,9 @@ const config: Phaser.Types.Core.GameConfig = {
   scene: [LoaderScene, GameScene, ShooterScene],
 };
 
-window.addEventListener("load", () => new Phaser.Game(config));
+window.addEventListener("load", () => { 
+    new Phaser.Game(config); 
+    createChatDomElements();
+});
+
+
