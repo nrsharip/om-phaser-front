@@ -3,8 +3,10 @@ export let httpRequest: XMLHttpRequest;
 // https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX
 
 export function makeRequest(
-    url: string, 
-    onreadystatechange: (this: XMLHttpRequest, ev: Event) => any
+    method: string,
+    url: string,
+    body?: XMLHttpRequestBodyInit,
+    onreadystatechange?: (this: XMLHttpRequest, ev: Event) => any
 ): boolean {
     httpRequest = new XMLHttpRequest();
 
@@ -13,7 +15,7 @@ export function makeRequest(
         return false;
     }
     httpRequest.onreadystatechange = onreadystatechange;
-    httpRequest.open("GET", url);
-    httpRequest.send();
+    httpRequest.open(method, url);
+    httpRequest.send(body);
     return true;
 }

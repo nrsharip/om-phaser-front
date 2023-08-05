@@ -5,6 +5,7 @@ let div: HTMLDivElement;
 export function createDomElements() {
     div = <HTMLDivElement> document.createElement("div");
 
+    div.style.background = "#FAFAFA";
     div.style.width = "1024px";
     div.style.maxWidth = "1024px";
     div.style.height = "120px";
@@ -13,23 +14,59 @@ export function createDomElements() {
     div.style.margin = "0";
     div.style.overflow = "auto";
 
-    let btn: HTMLButtonElement = <HTMLButtonElement> document.createElement("button");
-    btn.addEventListener('click', (e: Event) => makeRequest(
-        `http://127.0.0.1:3000?millis=1691243420756`,
+    getMessages();
+
+    let input: HTMLInputElement = <HTMLInputElement> document.createElement("input");
+    input.style.width = "1024px";
+    input.style.maxWidth = "1024px";
+    input.style.padding = "0";
+    input.style.margin = "0";
+    input.addEventListener('keypress', (event: KeyboardEvent) => {
+        if (event.key === 'Enter' && event.target instanceof HTMLInputElement) {
+            postMessage(input.value);
+            input.value = "";
+        }      
+    });
+
+    // каждые 5 секунд получаем новые сообщения
+    setInterval(getMessages, 5000);
+
+    document.body?.appendChild(div);
+    document.body?.appendChild(input);
+}
+
+function getMessages() {
+    makeRequest(
+        "GET",
+        `http://127.0.0.1:3000`,
+        undefined,
         (): void => {
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
                 if (httpRequest.status === 200) {
                     processHttpRequest();
                 } else {
-                    alert("There was a problem with the request.");
+                    console.log("Проблема с GET запросом");
                 }
             }
         }
-    ));
-    btn.textContent = "GET";
+    )
+}
 
-    document.body?.appendChild(div);
-    document.body?.appendChild(btn);
+function postMessage(message: string) {
+    makeRequest(
+        "POST",
+        `http://127.0.0.1:3000`,
+        message,
+        (): void => {
+            if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                if (httpRequest.status === 200) {
+                    getMessages();
+                } else {
+                    console.log("Проблема с POST запросом");
+                }
+            }
+        }
+    )
 }
 
 function processHttpRequest() {
