@@ -14,8 +14,8 @@ export function createChatDomElements() {
     div = <HTMLDivElement>document.createElement("div");
 
     div.style.background = "#FAFAFA";
-    div.style.width = "1024px";
-    div.style.maxWidth = "1024px";
+    div.style.width = "640px";
+    div.style.maxWidth = "640px";
     div.style.height = "120px";
     div.style.maxHeight = "120px";
     div.style.padding = "0";
@@ -25,8 +25,8 @@ export function createChatDomElements() {
     getMessages();
 
     let input: HTMLInputElement = <HTMLInputElement>document.createElement("input");
-    input.style.width = "1024px";
-    input.style.maxWidth = "1024px";
+    input.style.width = "640px";
+    input.style.maxWidth = "640px";
     input.style.padding = "0";
     input.style.margin = "0";
     input.addEventListener('keypress', (event: KeyboardEvent) => {

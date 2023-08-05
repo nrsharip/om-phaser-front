@@ -20,10 +20,10 @@ export default class ShooterScene extends Phaser.Scene {
     }
 
     public create() {
-        this._npc1 = new Soldier1(this, 96, 128);
-        this._npc2 = new Soldier2(this, 416, 128);
+        this._npc1 = new Soldier1(this, 64, 128);
+        this._npc2 = new Soldier2(this, 256, 128);
 
-        const widthInPixels = 512, heightInPixels = 192;
+        const widthInPixels = 320, heightInPixels = 192;
 
         this.cameras.main.setBounds(0, 0, widthInPixels, heightInPixels);
 
@@ -49,14 +49,14 @@ export default class ShooterScene extends Phaser.Scene {
 
     public showInfoAndMenu(winner: number) {
         this.textWinner?.destroy();
-        this.textWinner = this.add.text(134, 15, `Победил персонаж ${winner}`, {
+        this.textWinner = this.add.text(70, 15, `Победил персонаж ${winner}`, {
             fontFamily: 'Arial',
-            fontSize: 26,
+            fontSize: 18,
             color: '#000000'
         });
 
         this.textButton?.destroy();
-        this.textButton = this.add.text(226, 72, `Новый бой`, {
+        this.textButton = this.add.text(132, 52, `Новый бой`, {
             fontFamily: 'Arial',
             fontSize: 11,
             color: '#000000'
@@ -64,12 +64,12 @@ export default class ShooterScene extends Phaser.Scene {
         this.textButton.setDepth(1);
 
         this.button?.destroy();
-        this.button = this.add.nineslice(256, 80, 'grey-button-03', 0, 120, 30, 2, 2, 2, 2);
+        this.button = this.add.nineslice(160, 60, 'grey-button-03', 0, 80, 30, 2, 2, 2, 2);
         this.button.setInteractive();
 
         this.button.on('pointerdown', () => {
             this.button?.destroy();
-            this.button = this.add.nineslice(256, 80, 'grey-button-04', 0, 120, 30, 2, 2, 2, 2);
+            this.button = this.add.nineslice(160, 60, 'grey-button-04', 0, 80, 30, 2, 2, 2, 2);
             this.button.setInteractive();
 
             this.textButton.y += 1;

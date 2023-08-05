@@ -5,7 +5,7 @@ import { createChatDomElements } from "./utils/Chat";
 
 const config: Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
-    width: 512,
+    width: 320,
     height: 192,
     zoom: 2,
     backgroundColor: '#fdfdfd',
