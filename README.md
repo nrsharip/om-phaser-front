@@ -1,3 +1,54 @@
+# Демонстрация
+
+https://nrsharip.github.io/overmobile-phaser-front/
+
+# Скриншоты
+
+![запуск](docs/run-1.gif)
+
+# Инструкция
+
+1. Клонировать Frontend
+
+   ```
+   git clone https://github.com/nrsharip/overmobile-phaser-front.git
+   ```
+2. Клонировать Backend
+
+   ```
+   git clone https://github.com/nrsharip/overmobile-netty-back.git
+   ```
+3. Запустить Backend в IntelliJ IDEA
+
+   ![intellij](docs/intellij.png | width=300)
+
+4. Перейти в папку с Frontend
+
+   ```
+   cd overmobile-phaser-front
+   ```
+
+5. Запустить 'npm install'
+
+   ```
+   npm install
+   ```
+6. (1я вкладка в браузере) Запустить 'npm start'
+
+   ```
+   npm start
+   ```
+
+7. (2я вкладка в браузере) Либо запустить демо с Github Pages
+
+https://nrsharip.github.io/overmobile-phaser-front/
+
+8. Написать сообщения в чат
+
+9. Нажать 'Новый бой' после завершения игры
+
+![инструкции](docs/run-2.gif)
+
 # Игровые ресурсы
 
 - [FREE SOLDIER SPRITE SHEETS PIXEL ART](https://craftpix.net/freebies/free-soldier-sprite-sheets-pixel-art/)
