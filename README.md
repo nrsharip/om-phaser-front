@@ -20,32 +20,32 @@ https://nrsharip.github.io/overmobile-phaser-front/
    ```
 3. Запустить Backend в IntelliJ IDEA
 
-   ![intellij](docs/intellij.png | width=300)
+   <img src="docs/intellij.png" width="300">
 
-4. Перейти в папку с Frontend
+5. Перейти в папку с Frontend
 
    ```
    cd overmobile-phaser-front
    ```
 
-5. Запустить 'npm install'
+6. Запустить 'npm install'
 
    ```
    npm install
    ```
-6. (1я вкладка в браузере) Запустить 'npm start'
+7. (1я вкладка в браузере) Запустить 'npm start'
 
    ```
    npm start
    ```
 
-7. (2я вкладка в браузере) Либо запустить демо с Github Pages
+8. (2я вкладка в браузере) Либо запустить демо с Github Pages
 
-https://nrsharip.github.io/overmobile-phaser-front/
+   https://nrsharip.github.io/overmobile-phaser-front/
 
-8. Написать сообщения в чат
+9. Написать сообщения в чат
 
-9. Нажать 'Новый бой' после завершения игры
+10. Нажать 'Новый бой' после завершения игры
 
 ![инструкции](docs/run-2.gif)
 
